@@ -40,51 +40,24 @@ Many vendors charge 2x, 3x, or 4x the base product pricing for access to SSO, wh
 
 <table class="sortable">
 <thead>
-<tr><th>Vendor</th><th>Base Pricing</th><th>SSO Pricing</th><th>% Increase</th><th>Source</th><th>Date Updated</th></tr>
+<tr><th>Vendor</th><th>Web App</th><th>iOS App</th><th>Android App</th><th>Windows Client</th><th>Mac Client</th><th>Linux Client</th><th>Date Updated</th></tr>
 </thead>
 <tbody>
 {% for vendor in vendors %}
 <tr>
 <td markdown="span"><a href="{{ vendor.vendor_url }}">{{ vendor.name }}</a></td>
-<td markdown="span">{{ vendor.base_pricing }}</td>
-<td markdown="span">{{ vendor.sso_pricing }}</td>
-<td markdown="span">{{ vendor.percent_increase }}</td>
-<td>
-{% for source in vendor.pricing_source %}
-{% if forloop.first == false %}
-&amp;
+<td markdown="span">
+{% if vendor.web == true %}
+&#2713;
+{% else %}
+{{ vendor.web }}
 {% endif %}
-<a href="{{ source }}">&#128279;</a>
-{% endfor %}
-{{ vendor.pricing_note }}</td>
-<td>{{ vendor.updated_at }}</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-
-## The Other List ##
-Some vendors simply do not list their pricing for SSO because the pricing is negotiated with an account manager. These vendors get their own table as we assume they apply a significant premium for SSO.
-
-<table class="sortable">
-<thead>
-<tr><th>Vendor</th><th>Base Pricing</th><th>SSO Pricing</th><th>% Increase</th><th>Source</th><th>Date Updated</th></tr>
-</thead>
-<tbody>
-{% for vendor in call_us %}
-<tr>
-<td markdown="span"><a href="{{ vendor.vendor_url }}">{{ vendor.name }}</a></td>
-<td markdown="span">{{ vendor.base_pricing }}</td>
-<td markdown="span">{{ vendor.sso_pricing }}</td>
-<td markdown="span">{{ vendor.percent_increase }}</td>
-<td>
-{% for source in vendor.pricing_source %}
-{% if forloop.first == false %}
-&amp;
-{% endif %}
-<a href="{{ source }}">&#128279;</a>
-{% endfor %}
-{{ vendor.pricing_note }}</td>
+</td>
+<td markdown="span">{{ vendor.ios_app }}</td>
+<td markdown="span">{{ vendor.android_app }}</td>
+<td markdown="span">{{ vendor.windows_client }}</td>
+<td markdown="span">{{ vendor.mac_client }}</td>
+<td markdown="span">{{ vendor.linux_client }}</td>
 <td>{{ vendor.updated_at }}</td>
 </tr>
 {% endfor %}
@@ -134,6 +107,9 @@ But it costs money to provide SAML support, so we can't offer it for free!
 </summary>
   While I'd like people to really consider it a <em>bare minimum</em> feature for business SaaS, I'm OK with it costing a little extra to cover maintenance costs. If your SSO support is a 10% price hike, you're not on this list. But these percentage increases are not maintenance costs, they're revenue generation because you know your customers have no good options.
 </details>
+
+## Attributions
+* This code enabling this project was forked from the work of [robchahin](https://github.com/robchahin) on the [SSO Wall of Shame](https://github.com/robchahin/sso-wall-of-shame). They are in no way endorsing the content published here.
 
 ## Footnotes
 {% for vendor in vendors %}

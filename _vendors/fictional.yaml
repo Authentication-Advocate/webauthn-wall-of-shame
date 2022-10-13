@@ -1,0 +1,9 @@
+---
+footnotes: '[^fictional-support]: Sorta works sometimes or something.'
+name: Fictional
+web: works
+android_app: works
+ios_app: webview
+test_results: /test_results/fictional.md
+updated_at: 2022-10-08
+vendor_url: https://nickborgers.com
