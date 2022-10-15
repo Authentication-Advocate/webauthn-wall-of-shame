@@ -7,6 +7,6 @@ android_app: true
 windows_client: true
 mac_client: webview
 linux_client: true
-test_results: /test_results/fictional.md
+test_results: https://github.com/NickBorgers/webauthn-wall-of-shame/blob/master/test_results/fictional.md
 updated_at: 2022-10-08
 vendor_url: https://nickborgers.com
