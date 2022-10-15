@@ -1,9 +1,11 @@
-title: The SSO Wall of Shame
+title: The WebAuthN Wall of Shame
 description: >-
-  A list of vendors that treat single sign-on as a luxury feature, not a core
-  security requirement.
+  A list of vendors that do not support WebAuthn, modern
+  phishing-resistant authentication based on FIDO2.
 
-url: https://robchahin.github.io/sso-wall-of-shame
+url: https://nickborgers.github.io/webauthn-wall-of-shame
+
+host: 0.0.0.0
 
 theme: jekyll-theme-cayman
 kramdown:
