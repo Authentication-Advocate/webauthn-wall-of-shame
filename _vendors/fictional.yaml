@@ -1,9 +1,12 @@
 ---
 footnotes: '[^fictional-support]: Sorta works sometimes or something.'
 name: Fictional
-web: works
-android_app: works
+web: true
 ios_app: webview
+android_app: true
+windows_client: true
+mac_client: webview
+linux_client: true
 test_results: /test_results/fictional.md
 updated_at: 2022-10-08
 vendor_url: https://nickborgers.com
