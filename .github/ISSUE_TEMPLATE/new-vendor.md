@@ -1,22 +1,30 @@
 ---
-name: New vendor
-about: I'd like to add a vendor but can't / won't submit a PR
+name: New product
+about: I'd like to add a product but can't / won't submit a PR
 
 ---
+**What is the product name?**
+e.g. LastPass
 
-**What is the vendor's name?**
-e.g. Slack
+**What is the vendor's url?**
+e.g. https://www.lastpass.com/products/business
 
-**What is the vendor's pricing site?**
-e.g. https://slack.com/pricing
+**Where have you documented your testing?**
 
-**What is the base pricing? Use the lowest tier that looks sane for a small business customer, not free or personal tiers.**
-e.g. $5 per user/month, $3.33 per instance/month
 
-**What is the minimum pricing for SSO support?**
-e.g. $10 per user/month, $6 per instance/month
+**Does the iOS App allow you to use WebAuthN/FIDO2 at an identity provider?**
+Yes|No, it uses a webview|No for some other reason|I didn't test this platform
 
-**Does this pricing info come from a quote or other non-public source?**
-Add any additional pricing context here.
+**Does the Android App allow you to use WebAuthN/FIDO2 at an identity provider?**
+Yes|No, it uses a webview|No for some other reason|I didn't test this platform
+
+**Does the Windows Client allow you to use WebAuthN/FIDO2 at an identity provider?**
+Yes|No, it uses a webview|No for some other reason|I didn't test this platform
+
+**Does the Mac Client allow you to use WebAuthN/FIDO2 at an identity provider?**
+Yes|No, it uses a webview|No for some other reason|I didn't test this platform
+
+**Does the Linux Client allow you to use WebAuthN/FIDO2 at an identity provider?**
+Yes|No, it uses a webview|No for some other reason|I didn't test this platform
 
 **Are there any caveats we should list in the footnotes?**

@@ -6,23 +6,20 @@
 <summary>
 Why does this exist?
 </summary>
+The products in this list do not support WebAuthN when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthN a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward.
+
 Web Authentication (WebAuthN) is a means to authenticate users that is almost completely resistant to phishing and related attacks. When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
 
 Unphishable authentication is here and available, but we can't get its benefits because of how specific applications work.
 
-Despite being published in 2016, support for WebAuthN is inconsistent at best. In particular, it is extremely difficult to configure a common identity system such as Okta to require WebAuthN for user authentication. This is because native applications, such as those on iOS, Android, Windows, or MacOS have been built in ways that prevent use of WebAuthN for authentication. The problems in these applications is most often that they use a technology called a WebView for authentication. This was always a bad practice, as it means the application has direct access to users' credentials and their session token with the identity provider in fundamental conflict with the intent of technologies such as OAuth, but makes it impossible to support WebAuthN. As a result, the identity system must support phishable authentication. An adversary will target the phishiable authentication that must be supported instead of the stronger WebAuthN, dramatically reducing the security benefit of adopting WebAuthN.
+Despite being published in 2016, support for WebAuthN is inconsistent at best. In particular, it is extremely difficult to configure an [identity provider](https://en.wikipedia.org/wiki/Identity_provider) to require WebAuthN for user authentication. This is because native applications, such as those on iOS, Android, Windows, or MacOS have been built in ways that prevent use of WebAuthN for authentication. The problems in these applications is most often that they use a technology called a WebView for authentication. This was always a bad practice, as it means the application has direct access to users' credentials and their session token with the identity provider in fundamental conflict with the intent of technologies such as OAuth, and makes it impossible to support WebAuthN. As a result, the identity system must support phishable authentication. An adversary will target the phishiable authentication that must be supported instead of the stronger WebAuthN, dramatically reducing the security benefit of adopting WebAuthN.
 
 </details>
 
 {% assign all = site.vendors | sort: "name" %}
 {% assign vendors = "" | split: ',' %}
-{% assign call_us = "" | split: ',' %}
 {% for vendor in all %}
-	{% if vendor.sso_pricing contains "Call" %}
-		{% assign call_us = call_us | push: vendor %}
-	{% else %}
-		{% assign vendors = vendors | push: vendor %}
-	{% endif %}
+	{% assign vendors = vendors | push: vendor %}
 {% endfor %}
 
 ## The List
@@ -36,15 +33,13 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 <tr>
 <td markdown="span"><a href="{{ vendor.vendor_url }}">{{ vendor.name }}</a></td>
 <td markdown="span">
-{% if vendor.web == true %}
-&#10003;
-{% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.web }}</a>
-{% endif %}
+&#10003; <!-- There's really no way to screw this up in a browser -->
 </td>
 <td markdown="span">
 {% if vendor.ios_app == true %}
 &#10003;
+{% elsif vendor.ios_app == nil or vendor.ios_app == "" %}
+?
 {% else %}
 <a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
 {% endif %}
@@ -52,6 +47,8 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 <td markdown="span">
 {% if vendor.android_app == true %}
 &#10003;
+{% elsif vendor.android_app == nil or vendor.android_app == "" %}
+?
 {% else %}
 <a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
 {% endif %}
@@ -59,6 +56,8 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 <td markdown="span">
 {% if vendor.windows_client == true %}
 &#10003;
+{% elsif vendor.windows_client == nil or vendor.windows_client == "" %}
+?
 {% else %}
 <a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
 {% endif %}
@@ -66,6 +65,8 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 <td markdown="span">
 {% if vendor.mac_client == true %}
 &#10003;
+{% elsif vendor.mac_client == nil or vendor.mac_client == "" %}
+?
 {% else %}
 <a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
 {% endif %}
@@ -73,6 +74,8 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 <td markdown="span">
 {% if vendor.linux_client == true %}
 &#10003;
+{% elsif vendor.linux_client == nil or vendor.linux_client == "" %}
+?
 {% else %}
 <a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
 {% endif %}
@@ -104,8 +107,5 @@ Please feel free to submit a PR to this page. I only want this data to be accura
 
 ## Footnotes
 {% for vendor in vendors %}
-{{ vendor.footnotes }}
-{% endfor %}
-{% for vendor in call_us %}
 {{ vendor.footnotes }}
 {% endfor %}
