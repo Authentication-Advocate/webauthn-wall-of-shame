@@ -8,7 +8,7 @@ Why does this exist?
 </summary>
 The products in this list do not support WebAuthN when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthN a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward.
 
-Web Authentication (WebAuthN) is a means to authenticate users that is highly resistant to phishing and related attacks. When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
+Web Authentication (WebAuthN) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
 
 Unphishable authentication is here and available, but we can't get its benefits because of how specific applications work.
 
