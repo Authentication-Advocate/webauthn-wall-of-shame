@@ -2,8 +2,8 @@
 name: Microsoft Office
 ios_app: 
 android_app: 
-windows_client: webview
-mac_client: webview
+windows_client: unclear
+mac_client: unclear
 linux_client: 
 test_results: 
 updated_at: 2022-11-08
