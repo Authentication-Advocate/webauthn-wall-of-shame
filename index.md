@@ -26,62 +26,113 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 
 <table class="sortable">
 <thead>
-<tr><th>Vendor</th><th>Web App</th><th>iOS App</th><th>Android App</th><th>Windows Client</th><th>Mac Client</th><th>Linux Client</th><th>Date Updated</th></tr>
+<tr><th>Vendor</th><th>iOS App</th><th>Android App</th><th>Windows Client</th><th>Mac Client</th><th>Linux Client</th><th>Date Updated</th></tr>
 </thead>
 <tbody>
 {% for vendor in vendors %}
 <tr>
 <td markdown="span"><a href="{{ vendor.vendor_url }}">{{ vendor.name }}</a></td>
+
+<!-- iOS App Platform -->
 <td markdown="span">
-&#10003; <!-- There's really no way to screw this up in a browser -->
-</td>
-<td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.ios_app == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.ios_app == nil or vendor.ios_app == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
 {% elsif vendor.test_results == nil or vendor.test_results == "" %}
-{{ vendor.ios_app }}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.ios_app }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Android App Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.android_app == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.android_app == nil or vendor.android_app == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.android_app }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Windows Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.windows_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.windows_client == nil or vendor.windows_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.windows_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Mac Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.mac_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.mac_client == nil or vendor.mac_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.mac_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Linux Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.linux_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.linux_client == nil or vendor.linux_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.linux_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
 <td>{{ vendor.updated_at }}</td>
 </tr>
 {% endfor %}
