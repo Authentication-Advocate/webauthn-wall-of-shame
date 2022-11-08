@@ -41,14 +41,16 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 	&#10003;
 {% elsif vendor.ios_app == nil or vendor.ios_app == "" %}
 <!-- If we have no information about this app -->
-	?
+<!-- Deliberately blank -->
 <!-- At this point in the logic the app did not work with FIDO2 -->
-{% elsif vendor.test_results == nil or vendor.test_results == "" %}
-<!-- If don't have specific test results to link to -->
-	{{ vendor.ios_app }}
 {% else %}
-<!-- We have specific testing results to link to -->
-	<a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
+	{% if vendor.ios_app == "webview" %}
+	<!-- If don't have specific test results to link to -->
+		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+	{% else %}
+	<!-- We have specific testing results to link to -->
+		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
 </td>
@@ -61,14 +63,16 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 	&#10003;
 {% elsif vendor.android_app == nil or vendor.android_app == "" %}
 <!-- If we have no information about this app -->
-	?
+<!-- Deliberately blank -->
 <!-- At this point in the logic the app did not work with FIDO2 -->
-{% elsif vendor.test_results == nil or vendor.test_results == "" %}
-<!-- If don't have specific test results to link to -->
-	{{ vendor.android_app }}
 {% else %}
-<!-- We have specific testing results to link to -->
-	<a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
+	{% if vendor.android_app == "webview" %}
+	<!-- If don't have specific test results to link to -->
+		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+	{% else %}
+	<!-- We have specific testing results to link to -->
+		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
 </td>
@@ -81,14 +85,16 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 	&#10003;
 {% elsif vendor.windows_client == nil or vendor.windows_client == "" %}
 <!-- If we have no information about this app -->
-	?
+<!-- Deliberately blank -->
 <!-- At this point in the logic the app did not work with FIDO2 -->
-{% elsif vendor.test_results == nil or vendor.test_results == "" %}
-<!-- If don't have specific test results to link to -->
-	{{ vendor.windows_client }}
 {% else %}
-<!-- We have specific testing results to link to -->
-	<a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
+	{% if vendor.windows_client == "webview" %}
+	<!-- If don't have specific test results to link to -->
+		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+	{% else %}
+	<!-- We have specific testing results to link to -->
+		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
 </td>
@@ -101,14 +107,16 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 	&#10003;
 {% elsif vendor.mac_client == nil or vendor.mac_client == "" %}
 <!-- If we have no information about this app -->
-	?
+<!-- Deliberately blank -->
 <!-- At this point in the logic the app did not work with FIDO2 -->
-{% elsif vendor.test_results == nil or vendor.test_results == "" %}
-<!-- If don't have specific test results to link to -->
-	{{ vendor.mac_client }}
 {% else %}
-<!-- We have specific testing results to link to -->
-	<a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
+	{% if vendor.mac_client == "webview" %}
+	<!-- If don't have specific test results to link to -->
+		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+	{% else %}
+	<!-- We have specific testing results to link to -->
+		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
 </td>
@@ -121,14 +129,16 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 	&#10003;
 {% elsif vendor.linux_client == nil or vendor.linux_client == "" %}
 <!-- If we have no information about this app -->
-	?
+<!-- Deliberately blank -->
 <!-- At this point in the logic the app did not work with FIDO2 -->
-{% elsif vendor.test_results == nil or vendor.test_results == "" %}
-<!-- If don't have specific test results to link to -->
-	{{ vendor.linux_client }}
 {% else %}
-<!-- We have specific testing results to link to -->
-	<a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
+	{% if vendor.linux_client == "webview" %}
+	<!-- If don't have specific test results to link to -->
+		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+	{% else %}
+	<!-- We have specific testing results to link to -->
+		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
 </td>
@@ -139,13 +149,28 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 </tbody>
 </table>
 
+## Problem Categories
+<table>
+<thead>
+<tr><th>Icon</th><th>Problem</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>&#9635;</td><td markdown="span" id="webview">WebView</td><td>This product appears to use a WebView in its application for this platform. <a href="https://developer.android.com/reference/android/webkit/WebView">A WebView is a low-feature web browser</a> built into an operating system for use in applications. It lacks numerous features, including support for FIDO2. Their use in authentication has been known as a bad idea for many years, and <a href="https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html">Internet companies have begun actively preventing its use more recently</a>.</td>
+</tr>
+<tr>
+<td>?</td><td markdown="span" id="unclear">Unclear</td><td>We're not sure what the product's application is doing, but FIDO2 authentication doesn't work with the application provided on this platform.</td>
+</tr>
+</tbody>
+</table>
+
 ## FAQs
 
 <details>
 <summary>
 What's a WebView?
 </summary>
-<a href="https://developer.android.com/reference/android/webkit/WebView">A WebView is a low-feature web browser</a> built into an operating system for use in applications. It lacks numerous features, including support FIDO2. Their use in authentication has been known as a bad idea for many years, and <a href="https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html">Internet companies have begun actively preventing its use more recently</a>.
+<a href="https://developer.android.com/reference/android/webkit/WebView">A WebView is a low-feature web browser</a> built into an operating system for use in applications. It lacks numerous features, including support for FIDO2. Their use in authentication has been known as a bad idea for many years, and <a href="https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html">Internet companies have begun actively preventing its use more recently</a>.
 </details>
 
 <details>

@@ -30,13 +30,22 @@ summary > p {
   a.btn { display: none; }
 }
 
-// Don't wrap the Source or Date Added columns
-tr {
-  td:nth-child(5), td:nth-child(6) {
-    white-space: nowrap;
-  }
-}
-
 .footnotes {
   font-size: smaller;
+}
+
+a {
+  cursor: pointer;
+}
+
+.x {
+  color: red;
+  font-size: larger;
+  float: left;
+}
+
+.symbol {
+  float: left;
+  margin-top: 1px;
+  margin-left: 5px;
 }
