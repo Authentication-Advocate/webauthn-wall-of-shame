@@ -8,7 +8,7 @@ Why does this exist?
 </summary>
 The products in this list do not support WebAuthN when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthN a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward.
 
-Web Authentication (WebAuthN) is a means to authenticate users that is almost completely resistant to phishing and related attacks. When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
+Web Authentication (WebAuthN) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
 
 Unphishable authentication is here and available, but we can't get its benefits because of how specific applications work.
 
@@ -26,60 +26,113 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 
 <table class="sortable">
 <thead>
-<tr><th>Vendor</th><th>Web App</th><th>iOS App</th><th>Android App</th><th>Windows Client</th><th>Mac Client</th><th>Linux Client</th><th>Date Updated</th></tr>
+<tr><th>Vendor</th><th>iOS App</th><th>Android App</th><th>Windows Client</th><th>Mac Client</th><th>Linux Client</th><th>Date Updated</th></tr>
 </thead>
 <tbody>
 {% for vendor in vendors %}
 <tr>
 <td markdown="span"><a href="{{ vendor.vendor_url }}">{{ vendor.name }}</a></td>
+
+<!-- iOS App Platform -->
 <td markdown="span">
-&#10003; <!-- There's really no way to screw this up in a browser -->
-</td>
-<td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.ios_app == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.ios_app == nil or vendor.ios_app == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.ios_app }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.ios_app }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Android App Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.android_app == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.android_app == nil or vendor.android_app == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.android_app }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.android_app }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Windows Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.windows_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.windows_client == nil or vendor.windows_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.windows_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.windows_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Mac Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.mac_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.mac_client == nil or vendor.mac_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.mac_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.mac_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
+<!-- Linux Client Platform -->
 <td markdown="span">
+<!-- Try to reflect the product's behavior on this platform with text/symbols -->
 {% if vendor.linux_client == true %}
-&#10003;
+<!-- If app was tested and it worked -->
+	&#10003;
 {% elsif vendor.linux_client == nil or vendor.linux_client == "" %}
-?
+<!-- If we have no information about this app -->
+	?
+<!-- At this point in the logic the app did not work with FIDO2 -->
+{% elsif vendor.test_results == nil or vendor.test_results == "" %}
+<!-- If don't have specific test results to link to -->
+	{{ vendor.linux_client }}
 {% else %}
-<a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
+<!-- We have specific testing results to link to -->
+	<a href="{{ vendor.test_results }}">{{ vendor.linux_client }}</a>
 {% endif %}
+<!-- Whew, done with that app platform -->
 </td>
+
 <td>{{ vendor.updated_at }}</td>
 </tr>
 {% endfor %}
@@ -99,7 +152,7 @@ What's a WebView?
 <summary>
 I'm a vendor and this data is wrong!
 </summary>
-Please feel free to submit a PR to this page. I only want this data to be accurate.
+Please feel free to <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame">submit a PR to this repository</a>. I only want this data to be accurate.
 </details>
 
 ## Attributions

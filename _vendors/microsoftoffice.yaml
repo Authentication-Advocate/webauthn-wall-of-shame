@@ -1,0 +1,10 @@
+---
+name: Microsoft Office
+ios_app: 
+android_app: 
+windows_client: webview
+mac_client: webview
+linux_client: 
+test_results: 
+updated_at: 2022-11-08
+vendor_url: https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products-b
