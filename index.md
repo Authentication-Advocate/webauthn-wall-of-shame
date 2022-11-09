@@ -2,18 +2,27 @@
 ---
 <script src="assets/js/sorttable.js"></script>
 
-<details open>
+<details>
 <summary>
 Why does this exist?
 </summary>
 The products in this list do not support WebAuthN when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthN a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward.
 
-Web Authentication (WebAuthN) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
-
 Unphishable authentication is here and available, but we can't get its benefits because of how specific applications work.
+</details>
 
+<details>
+<summary>
+What is WebAuthN?
+</summary>
+Web Authentication (WebAuthN) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
+</details>
+
+<details>
+<summary>
+What is the problem?
+</summary>
 Despite being published in 2016, support for WebAuthN is inconsistent at best. In particular, it is extremely difficult to configure an [identity provider](https://en.wikipedia.org/wiki/Identity_provider) to require WebAuthN for user authentication. This is because native applications, such as those on iOS, Android, Windows, or MacOS have been built in ways that prevent use of WebAuthN for authentication. The problems in these applications is most often that they use a technology called a WebView for authentication. This was always a bad practice, as it means the application has direct access to users' credentials and their session token with the identity provider in fundamental conflict with the intent of technologies such as OAuth, and makes it impossible to support WebAuthN. As a result, the identity system must support phishable authentication. An adversary will target the phishiable authentication that must be supported instead of the stronger WebAuthN, dramatically reducing the security benefit of adopting WebAuthN.
-
 </details>
 
 {% assign all = site.vendors | sort: "name" %}
@@ -46,10 +55,10 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 {% else %}
 	{% if vendor.ios_app == "webview" %}
 	<!-- If don't have specific test results to link to -->
-		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+		<a onclick="document.getElementById('webview').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#9635;</span></a>
 	{% else %}
 	<!-- We have specific testing results to link to -->
-		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+		<a onclick="document.getElementById('unclear').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#63;</span></a>
 	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
@@ -68,10 +77,10 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 {% else %}
 	{% if vendor.android_app == "webview" %}
 	<!-- If don't have specific test results to link to -->
-		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+		<a onclick="document.getElementById('webview').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#9635;</span></a>
 	{% else %}
 	<!-- We have specific testing results to link to -->
-		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+		<a onclick="document.getElementById('unclear').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#63;</span></a>
 	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
@@ -90,10 +99,10 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 {% else %}
 	{% if vendor.windows_client == "webview" %}
 	<!-- If don't have specific test results to link to -->
-		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+		<a onclick="document.getElementById('webview').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#9635;</span></a>
 	{% else %}
 	<!-- We have specific testing results to link to -->
-		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+		<a onclick="document.getElementById('unclear').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#63;</span></a>
 	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
@@ -112,10 +121,10 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 {% else %}
 	{% if vendor.mac_client == "webview" %}
 	<!-- If don't have specific test results to link to -->
-		<a onclick="document.getElementById('webview').scrollIntoView();"><span class="x">X</span><span class="symbol">&#9635;</span></a>
+		<a onclick="document.getElementById('webview').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#9635;</span></a>
 	{% else %}
 	<!-- We have specific testing results to link to -->
-		<a onclick="document.getElementById('unclear').scrollIntoView();"><span class="x">X</span><span class="symbol">&#63;</span></a>
+		<a onclick="document.getElementById('unclear').scrollIntoView({behavior: 'smooth', block: 'start'});"><span class="x">X</span><span class="symbol">&#63;</span></a>
 	{% endif %}
 {% endif %}
 <!-- Whew, done with that app platform -->
@@ -165,19 +174,18 @@ Despite being published in 2016, support for WebAuthN is inconsistent at best. I
 </table>
 
 ## FAQs
-
-<details>
-<summary>
-What's a WebView?
-</summary>
-<a href="https://developer.android.com/reference/android/webkit/WebView">A WebView is a low-feature web browser</a> built into an operating system for use in applications. It lacks numerous features, including support for FIDO2. Their use in authentication has been known as a bad idea for many years, and <a href="https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html">Internet companies have begun actively preventing its use more recently</a>.
-</details>
-
 <details>
 <summary>
 I'm a vendor and this data is wrong!
 </summary>
-Please feel free to <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame">submit a PR to this repository</a>. I only want this data to be accurate.
+Please feel free to <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame">submit a PR to this repository</a> or <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame/issues/new/choose">submit an issue</a>. We want this data to be accurate.
+</details>
+
+<details>
+<summary>
+I know something that isn't on this list!
+</summary>
+Please feel free to <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame">submit a PR to this repository</a> or <a href="https://github.com/Authentication-Advocate/webauthn-wall-of-shame/issues/new/choose">submit an issue</a>.
 </details>
 
 ## Attributions
