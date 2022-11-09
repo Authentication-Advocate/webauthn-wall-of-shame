@@ -4,7 +4,7 @@ ios_app:
 android_app: 
 windows_client: webview
 mac_client: webview
-linux_client: 
+linux_client: webview
 test_results: 
-updated_at: 2022-11-08
+updated_at: 2022-11-09
 vendor_url: https://www.pulsesecure.net/
