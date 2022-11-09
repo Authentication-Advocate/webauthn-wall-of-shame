@@ -1,9 +1,9 @@
 title: The WebAuthN Wall of Shame
 description: >-
-  A list of vendors that do not support WebAuthn, preventing
+  A list of vendors that do not support WebAuthN, preventing
   their customers/users from using phishing-resistant authenticators.
 
-url: https://nickborgers.github.io/webauthn-wall-of-shame
+url: https://fido.fail/
 
 host: 0.0.0.0
 
