@@ -1,0 +1,10 @@
+---
+name: Amazon Chime
+ios_app: webview
+android_app: 
+windows_client: 
+mac_client: webview
+linux_client: 
+test_results: 
+updated_at: 2022-11-09
+vendor_url: https://aws.amazon.com/chime/
