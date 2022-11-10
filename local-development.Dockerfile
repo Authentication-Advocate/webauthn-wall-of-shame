@@ -8,4 +8,6 @@ COPY Gemfile* /app/
 
 RUN bundle install
 
+RUN git config --global --add safe.directory '*'
+
 ENTRYPOINT ["bundle", "exec", "jekyll", "serve"]

@@ -2,27 +2,27 @@
 ---
 <script src="assets/js/sorttable.js"></script>
 
-<details>
+<details open>
 <summary>
 Why does this exist?
 </summary>
-The products in this list do not support WebAuthN when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthN a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward.
+The products in this list do not support WebAuthn when used with an external [identity provider](https://en.wikipedia.org/wiki/Identity_provider). This lack of support means an organization cannot make WebAuthn a mandatory part of their authentication flow; a single incompatible app can prevent an entire oganization from moving forward. This is the typical deployment for these products in an Enterprise environment, and specifically impacts organizations' use of these products. The products may actually have their own, specifically built, WebAuthn support; that is not what this list is about.
 
 Unphishable authentication is here and available, but we can't get its benefits because of how specific applications work.
 </details>
 
 <details>
 <summary>
-What is WebAuthN?
+What is WebAuthn?
 </summary>
-Web Authentication (WebAuthN) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthN for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthN cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
+Web Authentication (WebAuthn) is a means to authenticate users that is [highly resistant to phishing and related attacks](https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf#page=2). When a system uses WebAuthn for authentication there is no known way for an adversary to trick the user into authenticating on behalf of them; a system using WebAuthn cannot be phished. It is the most user-friendly and flexible technology with this feature and is a direct descendant of U2F which was also created by the FIDO Allliance.
 </details>
 
 <details>
 <summary>
 What is the problem?
 </summary>
-Despite being published in 2016, support for WebAuthN is inconsistent at best. In particular, it is extremely difficult to configure an [identity provider](https://en.wikipedia.org/wiki/Identity_provider) to require WebAuthN for user authentication. This is because native applications, such as those on iOS, Android, Windows, or MacOS have been built in ways that prevent use of WebAuthN for authentication. The problems in these applications is most often that they use a technology called a WebView for authentication. This was always a bad practice, as it means the application has direct access to users' credentials and their session token with the identity provider in fundamental conflict with the intent of technologies such as OAuth, and makes it impossible to support WebAuthN. As a result, the identity system must support phishable authentication. An adversary will target the phishiable authentication that must be supported instead of the stronger WebAuthN, dramatically reducing the security benefit of adopting WebAuthN.
+Despite being published in 2016, support for WebAuthn is inconsistent at best. In particular, it is extremely difficult to configure an [identity provider](https://en.wikipedia.org/wiki/Identity_provider) to require WebAuthn for user authentication. This is because native applications, such as those on iOS, Android, Windows, or MacOS have been built in ways that prevent use of WebAuthn for authentication. The problems in these applications is most often that they use a technology called a WebView for authentication. This was always a bad practice, as it means the application has direct access to users' credentials and their session token with the identity provider in fundamental conflict with the intent of technologies such as OAuth, and makes it impossible to support WebAuthn. As a result, the identity system must support phishable authentication. An adversary will target the phishiable authentication that must be supported instead of the stronger WebAuthn, dramatically reducing the security benefit of adopting WebAuthn.
 </details>
 
 {% assign all = site.vendors | sort: "name" %}
