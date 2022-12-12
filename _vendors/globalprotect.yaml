@@ -1,6 +1,6 @@
 ---
 name: GlobalProtect 
-ios_app: webview
+ios_app: true
 android_app: webview
 windows_client: true
 mac_client: true
