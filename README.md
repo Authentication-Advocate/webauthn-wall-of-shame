@@ -1,6 +1,6 @@
 # webauthn-wall-of-shame
 
-A list of vendors that are preventing widespread enforcement of WebAuthN, leaving organizations unncessarily vulnerable to phishing.
+A list of vendors that are preventing widespread enforcement of WebAuthn leaving organizations unncessarily vulnerable to phishing.
 
 Page structure lives in index.md, including intro text and FAQs for now.
 
@@ -16,9 +16,9 @@ Vendor data lives in `_vendors/`.
 ## Change the data being presented
 1. Find the corresponding `.yaml` file in [_vendors](_vendors/)
 1. Input the corrected value for the appropriate app platform, supported values are:
-  - `true`: the application on this platform supports WebAuthN/FIDO2
-  - `webview`: the application on this platform fails to support WebAuthN/FIDO2 becuase it uses a WebView
-  - `unclear`: the application on this platform fails to support WebAuthN/FIDO2 and it's not due to a WebView
+  - `true`: the application on this platform supports WebAuthn/FIDO2
+  - `webview`: the application on this platform fails to support WebAuthn/FIDO2 becuase it uses a WebView
+  - `unclear`: the application on this platform fails to support WebAuthn/FIDO2 and it's not due to a WebView
 
 ## Testing Changes / Running Locally
 To run this code, such as to begin making changes, clone this repo and run:
