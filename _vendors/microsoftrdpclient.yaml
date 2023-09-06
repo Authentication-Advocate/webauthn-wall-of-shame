@@ -1,0 +1,10 @@
+---
+name: Microsoft Remote Desktop client
+ios_app: 
+android_app: 
+windows_client: true
+mac_client: false
+linux_client: 
+test_results: 
+updated_at: 2023-09-06
+vendor_url: https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients
