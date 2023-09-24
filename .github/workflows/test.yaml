@@ -3,20 +3,14 @@ on:
     branches: [ '*' ]
 
 jobs:
-  test-local-dev-container-build:
+  test-local-dev-container:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo content
         uses: actions/checkout@v2
       - name: Ensure build still works
         run: make build
-
-  test-local-dev-container-execution:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo content
-        uses: actions/checkout@v2
-      - name: Ensure build still works
+      - name: Start up the container
         run: make run
       - name: Sleep for a few moments
         run: sleep 20
