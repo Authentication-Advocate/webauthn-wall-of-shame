@@ -4,9 +4,7 @@
 help: 
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| tr -d '#' | sed -E 's/Makefile.//' | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-#all: @ Build the container image and run the container interactively
-all: build run-interactively
-
+#build: @ Build, but do not run, the container
 build:
 	docker build -t webauthn-hall-of-shame-local-dev -f local-development.Dockerfile .
 
