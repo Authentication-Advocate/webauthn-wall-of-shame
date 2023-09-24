@@ -1,6 +1,10 @@
 on:
   push:
-    branches: [ '*' ]
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 jobs:
   test-local-dev-container:
