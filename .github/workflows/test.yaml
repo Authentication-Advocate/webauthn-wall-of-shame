@@ -12,7 +12,7 @@ jobs:
         run: make build
       - name: Start up the container
         run: make run
-      - name: Sleep for a few moments
-        run: sleep 20
-      - name: Check if container is still running
-        run: docker container inspect -f '{{.State.Running}}' webauthn-hall-of-shame-local-dev | grep true
+      - name: Ensure container becomes healthy
+        timeout-minutes: 1
+        run: until docker inspect --format "{{json .State.Health.Status }}" webauthn-hall-of-shame-local-dev | \
+          grep -m 1 '"healthy"'; do sleep 5; done;
