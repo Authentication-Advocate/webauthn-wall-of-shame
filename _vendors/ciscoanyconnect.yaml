@@ -1,0 +1,10 @@
+---
+name: Cisco AnyConnect
+ios_app: 
+android_app: 
+windows_client: true
+mac_client: false
+linux_client: 
+test_results: 
+updated_at: 2023-09-06
+vendor_url: https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html

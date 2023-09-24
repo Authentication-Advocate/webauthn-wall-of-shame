@@ -1,0 +1,10 @@
+---
+name: Microsoft Visual Studio
+ios_app: 
+android_app: 
+windows_client: false
+mac_client: 
+linux_client: 
+test_results: 
+updated_at: 2023-09-06
+vendor_url: https://visualstudio.microsoft.com/vs/
