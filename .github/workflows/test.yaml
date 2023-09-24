@@ -11,7 +11,7 @@ jobs:
       - name: Ensure build still works
         run: make build
 
-  test-local-dev-container-build:
+  test-local-dev-container-execution:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo content
