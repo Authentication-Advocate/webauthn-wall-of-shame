@@ -18,10 +18,10 @@ jobs:
           until docker inspect --format "{{json .State.Health.Status }}" webauthn-hall-of-shame-local-dev | \
           grep -m 1 '"healthy"'; do sleep 5; done;
   
-  yaml-lint:
+  test-configs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo content
         uses: actions/checkout@v2
       - name: Run YAML linter on all configs
-        run: make yaml-lint
+        run: make test-configs

@@ -1,9 +1,7 @@
-FROM alpine
+FROM python:3.9-alpine
 
-RUN apk add --no-cache yamllint bash
+RUN pip3 install pyyaml
 
-WORKDIR /app/
+COPY test_all_configs.py /usr/local/bin/test_all_configs.py
 
-COPY test_all_configs.sh /usr/local/bin/test_all_configs.sh
-
-CMD /usr/local/bin/test_all_configs.sh 
+CMD /usr/local/bin/test_all_configs.py
