@@ -1,0 +1,19 @@
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  test-local-dev-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v2
+      - name: Ensure build still works
+        run: make build
+      - name: Start up the container
+        run: make run
+      - name: Ensure container becomes healthy
+        timeout-minutes: 1
+        run: |
+          until docker inspect --format "{{json .State.Health.Status }}" webauthn-hall-of-shame-local-dev | \
+          grep -m 1 '"healthy"'; do sleep 5; done;

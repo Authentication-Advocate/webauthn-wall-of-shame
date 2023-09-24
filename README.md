@@ -23,6 +23,6 @@ Vendor data lives in `_vendors/`.
 ## Testing Changes / Running Locally
 To run this code, such as to begin making changes, clone this repo and run:
 ```
-make
+make run-interactively
 ```
 This will start the webapp running on `127.0.0.1:8080` where it should be accessible at http://127.0.0.1:8080. The source files are bind-mounted so you can edit them with an editor of your choice and should generally see our changes reflected on page refresh. Certain changes may require restarting the container, which can be done by running `exit` in the container and then `make` again from the repo basedir.
