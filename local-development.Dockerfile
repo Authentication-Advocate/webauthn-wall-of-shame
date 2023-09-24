@@ -1,4 +1,4 @@
-FROM ruby:alpine3.16
+FROM ruby:alpine3.17
 
 RUN apk update && apk add --no-cache build-base git
 

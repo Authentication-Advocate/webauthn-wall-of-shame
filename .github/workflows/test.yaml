@@ -1,0 +1,24 @@
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  test-local-dev-container-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v2
+      - name: Ensure build still works
+        run: make build
+
+  test-local-dev-container-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v2
+      - name: Ensure build still works
+        run: make run
+      - name: Sleep for a few moments
+        run: sleep 20
+      - name: Check if container is still running
+        run: docker container inspect -f '{{.State.Running}}' webauthn-hall-of-shame-local-dev | grep true
