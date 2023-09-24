@@ -27,8 +27,8 @@ update-gemfile:
 	docker run -it --rm --workdir=/app/ --entrypoint=/app/update_gemfile.sh \
 		--mount type=bind,source=${CURDIR},destination=/app/ ${IMAGE}
 
-#test-all-configs: @ Test the YAML config for each vendor
-test-all-configs:
+#yaml-lint: @ Run YAML Linter on each config
+yaml-lint:
 	docker build -t webauthn-hall-of-shame-config-test .github/workflows/config-test/
 	docker run --rm --mount type=bind,source=${CURDIR}/_vendors,destination=/configs/ webauthn-hall-of-shame-config-test 
 
