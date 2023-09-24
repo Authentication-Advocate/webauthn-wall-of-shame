@@ -13,7 +13,7 @@ jobs:
       - name: Start up the container
         run: make run
       - name: Ensure container becomes healthy
-        timeout-minutes: 3
+        timeout-minutes: 1
         run: |
           until docker inspect --format "{{json .State.Health.Status }}" webauthn-hall-of-shame-local-dev | \
           grep -m 1 '"healthy"'; do sleep 5; done;
