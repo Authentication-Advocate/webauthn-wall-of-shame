@@ -1,10 +1,10 @@
 ---
-name: GlobalProtect 
+name: GlobalProtect
 ios_app: true
 android_app: webview
 windows_client: true
 mac_client: true
-linux_client: 
-test_results: 
+linux_client:
+test_results:
 updated_at: 2022-11-10
 vendor_url: https://www.paloaltonetworks.com/sase/globalprotect

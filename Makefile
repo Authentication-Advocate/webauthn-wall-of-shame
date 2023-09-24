@@ -27,6 +27,11 @@ update-gemfile:
 	docker run -it --rm --workdir=/app/ --entrypoint=/app/update_gemfile.sh \
 		--mount type=bind,source=${CURDIR},destination=/app/ ${IMAGE}
 
+#test-configs: @ Test parseability and validity of each config
+test-configs:
+	docker build -t webauthn-hall-of-shame-config-test .github/workflows/config-test/
+	docker run --rm --mount type=bind,source=${CURDIR}/_vendors,destination=/configs/ webauthn-hall-of-shame-config-test 
+
 #stop: @ Stop the container
 stop:
 	@docker stop webauthn-hall-of-shame-local-dev || true

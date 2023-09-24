@@ -3,8 +3,8 @@ name: Jira Datacenter
 ios_app: webview
 android_app: webview
 windows_client:
-mac_client: 
-linux_client: 
+mac_client:
+linux_client:
 test_results: https://jira.atlassian.com/browse/JRASERVER-70665
 updated_at: 2023-03-29
 vendor_url: https://www.atlassian.com/enterprise/data-center/jira

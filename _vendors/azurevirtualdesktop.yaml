@@ -1,10 +1,10 @@
 ---
 name: Azure Virtual Desktop
-ios_app: 
-android_app: 
-windows_client: 
+ios_app:
+android_app:
+windows_client:
 mac_client: unclear
-linux_client: 
-test_results: 
+linux_client:
+test_results:
 updated_at: 2022-11-08
 vendor_url: https://learn.microsoft.com/en-us/azure/virtual-desktop/users/connect-macos
