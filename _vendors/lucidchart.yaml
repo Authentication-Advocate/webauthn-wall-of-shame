@@ -1,6 +1,6 @@
 ---
 name: Lucidchart
-ios_app: webview
+ios_app: true
 android_app:
 windows_client:
 mac_client:
